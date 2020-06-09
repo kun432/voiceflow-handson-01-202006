@@ -1,0 +1,519 @@
+
+<!doctype html>
+
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#4F7DC9">
+  <meta charset="UTF-8">
+  <title>Voiceflow日本語チュートリアル ① はじめてのAlexaスキル開発</title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
+  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://storage.googleapis.com/codelab-elements/codelab-elements.css">
+  <style>
+    .success {
+      color: #1e8e3e;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <google-codelab-analytics gaid="UA-49880327-14"></google-codelab-analytics>
+  <google-codelab codelab-gaid=""
+                  id="dist"
+                  title="Voiceflow日本語チュートリアル ① はじめてのAlexaスキル開発"
+                  environment="web"
+                  feedback-link="">
+    
+      <google-codelab-step label="概要" duration="0">
+        <p class="image-container"><img alt="logo" src="img/5848617b9d122077.png"></p>
+<p>Voiceflowを使ったノンコーディングではじめるAlexaスキル開発の日本語チュートリアルシリーズです。</p>
+<p>第1回は「はじめてのAlexaスキル開発」です。かんたんなスキルを作ってVoiceflowの操作になれていきましょう。</p>
+<h2 is-upgraded>はじめに</h2>
+<p>VoiceflowでAlexaスキルを開発するには事前に以下が必要です。</p>
+<ul>
+<li>Amazon.co.jpアカウント</li>
+<li>Alexa開発者アカウント</li>
+<li>Voiceflowアカウント</li>
+</ul>
+<p>まだの方は以下のページを参考に作成してください。<br><a href="https://vf-handson-setup.netlify.app/#0" target="_blank">https://vf-handson-setup.netlify.app/</a></p>
+<h2 is-upgraded>注意</h2>
+<aside class="warning"><p>本手順書は2020年4月22日時点のものですが、Voiceflowの開発はかなり活発なので、本手順書通りに進めてもうまくいかない場合や画面が変更されている場合があります。ご容赦ください。（必要な場合は補足します）</p>
+</aside>
+<aside class="special"><p>不具合やお気づきの点があれば、<a href="https://github.com/kun432/voiceflow-handson-setup/issues" target="_blank">https://github.com/kun432/voiceflow-handson-setup/issues</a>に記載してください</p>
+</aside>
+<h2 is-upgraded>更新履歴</h2>
+<ul>
+<li>2020/04/22   最新化</li>
+</ul>
+<p>ではNextをクリックしてください。</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="プロジェクトの新規作成" duration="0">
+        <h2 is-upgraded>プロジェクトの新規作成</h2>
+<p><a href="https://voiceflow.com/" target="_blank">https://voiceflow.com/</a>にアクセスし、&#34;Log in&#34;をクリックしてログインします。</p>
+<p class="image-container"><img src="img/c2a9af0c45a756e6.png"></p>
+<p>プロジェクトの一覧画面が開きます。&#34;Create Project&#34;をクリックして、プロジェクトを新規作成します。</p>
+<p class="image-container"><img src="img/9810c0bbd0bdca52.png"></p>
+<p>プロジェクトの情報を入力します。以下の通りに入力して、&#34;Create Project&#34;をクリックします。</p>
+<p class="image-container"><img src="img/62c20768b325d3f6.png"></p>
+<table>
+<tr></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>項目</strong></p>
+</td><td colspan="1" rowspan="1"><p><strong>入力内容</strong></p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><em>Enter your project name</em></p>
+</td><td colspan="1" rowspan="1"><p>プロジェクト名を入れます。「<strong>コーヒーショップ</strong>」と入力します。</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><em>Select Regions</em></p>
+</td><td colspan="1" rowspan="1"><p>言語を選択します。<strong>&#34;Japanese(JP)&#34;</strong>にチェックを入れて、<strong>&#34;English(US)&#34;</strong>のチェックを外します。</p>
+</td></tr>
+</table>
+<p>プロジェクトが作成されました！</p>
+<p>ではNextをクリックしてください。</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Voiceflowの基本操作とスキル開発の流れ" duration="0">
+        <h2 is-upgraded>画面の説明</h2>
+<p>最初にVoiceflowの画面の説明をかんたんにしておきます。全部を覚える必要はありません。使いながら覚えていきましょう。</p>
+<p class="image-container"><img src="img/cc18fc363ee2d535.png"></p>
+<table>
+<tr></tr>
+<tr><td colspan="1" rowspan="1"><p><strong>項目</strong></p>
+</td><td colspan="1" rowspan="1"><p><strong>入力内容</strong></p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><em>ステップ/ブロックメニュー</em></p>
+</td><td colspan="1" rowspan="1"><p>機能ごとに分けられたブロックが並んでいます。使いたいブロックをここから選びます。</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><em>キャンバス</em></p>
+</td><td colspan="1" rowspan="1"><p>ステップ/ブロックメニューから選んだブロックをここに配置し、線でつなげていくことで会話フローを作っていきます。</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><em>Homeブロック</em></p>
+</td><td colspan="1" rowspan="1"><p>最初から用意されているのがブロックです。ここから会話フローがスタートし、他のブロックにつなげていきます。なお、Homeブロックは削除することはできません。</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><em>アップロードボタン</em></p>
+</td><td colspan="1" rowspan="1"><p>作成したプロジェクトをAlexa／Google Homeそれぞれのプラットフォームにアップロードします。アップロードすることでAmazon EchoやGoogle Homeなどのスマートスピーカデバイスから利用可能となります。</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><em>メニュー切り替えタブ</em></p>
+</td><td colspan="1" rowspan="1"><p>メニューの切り替えを行います。会話フローを作成するDesignメニュー、会話フローを実際に動かしてテストを行うPrototypeメニュー、作成したスキルを申請するBuildメニューがあります。</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><em>キャンバスコントロールメニュー</em></p>
+</td><td colspan="1" rowspan="1"><p>Homeブロックに戻る、キャンバスの拡大・縮小などが行なえます。また対話モデルを作成する「対話モデルマネージャー」や、ドキュメントやチュートリアルなどへのリンクもあります。</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><em>Alexa/Google切り替えスイッチ</em></p>
+</td><td colspan="1" rowspan="1"><p>作成したプロジェクトをAlexa向け／Google Home向けに切り替えます。デフォルトはAlexaになっています。</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><em>設定ボタン</em></p>
+</td><td colspan="1" rowspan="1"><p>スキルの動作に関する設定を行います。</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><em>テスト共有ボタン</em></p>
+</td><td colspan="1" rowspan="1"><p>作成したプロジェクトのテストをかんたんに共有できるリンクを発行します。</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><em>コラボレーター追加ボタン</em></p>
+</td><td colspan="1" rowspan="1"><p>有償プランで利用可能な、リアルタイムコラボレーションのユーザを追加します。</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p><em>サポートボタン</em></p>
+</td><td colspan="1" rowspan="1"><p>Voiceflowへの質問やバグ・要望の報告が行なえます。</p>
+</td></tr>
+</table>
+<h2 is-upgraded>今回作成するサンプルスキルについて</h2>
+<p>では実際にサンプルスキルを作りながらやっていきましょう。今回作成するスキルはこんな感じです。</p>
+<p class="image-container"><img src="img/950d94e4379e0dce.png"></p>
+<p>Alexaスキルでは、最初の「アレクサ、コーヒーショップをひらいて」でスキル「コーヒーショップ」が呼び出されるようになっています。したがって、それ以降の会話フローをVoiceflowで作っていくことになります。</p>
+<h2 is-upgraded>ブロックの配置</h2>
+<p>まず、ユーザの呼び出しをうけて、Alexaが「コーヒーショップにようこそ。ご注文は何になさいますか？」と発話するところを作っていきましょう。Alexaに発話させるには「<strong>Speakブロック</strong>」を使います。</p>
+<p>左のステップ/フローメニューから、&#34;Speak&#34;と書かれたブロックをHomeブロックの右側にドラッグ＆ドロップします。</p>
+<p class="image-container"><img src="img/8fe9054b6ab9c90d.png"></p>
+<p>ブロックが配置されました。右側に入力欄が表示されますので、以下のように入力します。</p>
+<pre><code>コーヒーショップにようこそ。ご注文は何になさいますか？
+</code></pre>
+<p class="image-container"><img src="img/20b8db284de32c32.png"></p>
+<p>Homeブロックの中にある「Alexa, open コーヒーショップ」の右端にある丸いアイコンを一度クリックすると、ブロック同士を線でつなげられるようになります。Speakブロックのタイトルの左端あたりまで線を引っ張って、もう一度クリックして線をつなげます。</p>
+<p class="image-container"><img style="width: 600.00px" src="img/fc137a91727241f6.png"></p>
+<aside class="warning"><p>以下のように違うところに線がつながる場合もあるかと思います。<br><br><img style="width: 600.00px" src="img/4623d5a49bfb3877.png"><br><br><strong>線を繋ぐ場所には実は意味があります</strong>（これについては後で説明します。）ただし、現時点ではこれでも問題ありませんのでそのまま進めてOKです。もし修正したい場合は以下の手順で線を引き直してください。<br><br></p>
+<ul>
+<li>線の始点をもう一度クリックすると線を引き直せます。</li>
+<li>先の真ん中あたりにカーソルをあわせると表示されるゴミ箱アイコンをクリックすると線が削除されますので、再度線を引いてください。<br><img style="width: 600.00px" src="img/eafbc159531a2710.png"></li>
+</ul>
+</aside>
+<p>これで短いながらも会話フローがつながりました。ではさっそくテストしてみましょう。</p>
+<h2 is-upgraded>Alexa開発者コンソールへのアップロード</h2>
+<p>作成したスキルをテストするにはAlexa開発者コンソールへのアップロードが必要です。右上の&#34;Upload to Alexa&#34;というボタンをクリックしてください。</p>
+<p class="image-container"><img src="img/c1ad4bbece5a5d0d.png"></p>
+<p>初回にかぎり、VoiceflowアカウントとAlexa開発者アカウントの紐付けが必要になります。&#34;Connect Amazon&#34;ボタンをクリックしてください。</p>
+<p class="image-container"><img style="width: 600.00px" src="img/23db13650622effc.png"></p>
+<p>Amazonアカウントのログイン画面が出てきますので、お持ちのAmazonアカウントでログインします。</p>
+<p class="image-container"><img src="img/f1e24ada0fb22243.png"></p>
+<p>VoiceflowからAmazonアカウント経由でAlexaスキル作成等の許可を求める画面が出てきますので、「許可」をクリックします。これでアカウントの紐付けは完了です。</p>
+<p class="image-container"><img src="img/8cec939eb4dce69c.png"></p>
+<p>アップロードが行われます。100%になるまで待ちます。</p>
+<p class="image-container"><img style="width: 600.00px" src="img/2da67b075d7e27c6.png"></p>
+<p>100％になって&#34;Upload Successful&#34;と表示されればアップロード完了です。ではAlexa開発者コンソールでテストしましょう。&#34;Test on Alexa Simulator&#34;をクリックしてください。</p>
+<p class="image-container"><img style="width: 600.00px" src="img/6a64266e862bd60.png"></p>
+<p>Alexa開発者コンソールのログイン画面が表示されたら、Amazonアカウントでログインしてください。</p>
+<p class="image-container"><img src="img/bbbfbd5247ad74b2.png"></p>
+<p>Alexa開発者コンソールのテストシミュレータ画面が表示されます。作成したスキルはここでほぼ実機と同じようにテストができます。</p>
+<p class="image-container"><img src="img/13443b871dd289c8.png"></p>
+<p>テストは文字だけでなく音声でも行なえますので、マイクは有効にしておきましょう。「許可」をクリックします。</p>
+<p class="image-container"><img style="width: 600.00px" src="img/707dbd0117faacfa.png"></p>
+<p>なお、この時、左上のところで「非公開」が選択されていた場合は「開発中」に変更します。</p>
+<p class="image-container"><img style="width: 600.00px" src="img/d8fc4f6a44f3f18f.png"></p>
+<p>ではいよいよテストです。「日本語」が選択されていることを確認して、マイクアイコンをクリックしたままマイクに「コーヒーショップを開いて」と話しかけて、話し終わったら放してみてください。パソコンにマイクがない場合は、キーボードから入力してENTERキーを押してください。</p>
+<p class="image-container"><img style="width: 700.00px" src="img/1d097d029f64ad93.png"></p>
+<p>あなたの発話に対して、Voiceflowで設定した内容をAlexaが返してくれればテストは成功です！これでスキル開発の第一歩を踏み出したことになります！おめでとうございます！</p>
+<p class="image-container"><img style="width: 500.00px" src="img/d778b9f93fac6614.png"></p>
+<p>このように、Voiceflowでスキルを作成 → Alexa開発者コンソールにアップロード → Alexa開発者コンソールでテスト、というのがVoiceflowでのスキル開発の流れになります。</p>
+<p>Nextをクリックしてください。</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="ユーザの発話を受け取って分岐する" duration="0">
+        <p>Alexaが「ご注文は何になさいますか？」と注文を聞くところまでできたので、次は、ユーザの注文を受け取って、それに応じて異なる返事をするようにしましょう。今回、メニューは以下の3品とします。</p>
+<ul>
+<li>コーヒー（350円）</li>
+<li>紅茶（300円）</li>
+<li>オレンジジュース（400円）</li>
+</ul>
+<p>ユーザからの「発話」を受け取るには「<strong>Choiceブロック</strong>」を使います。左のステップ/フローメニューから、&#34;Choice&#34;と書かれたブロックをSpeakブロックの右側にドラッグ＆ドロップして、線でつないでください。</p>
+<p class="image-container"><img src="img/3af695f5c3de5ec3.png"></p>
+<p>Choiceブロックは分岐（Path）ごとに設定を行います。今回の例だと、コーヒー・紅茶・オレンジジュースの3つの設定が必要になります。やり方は同じなので、まずはコーヒー用の分岐を作っていきましょう。</p>
+<p>まず分岐の名前を入力します。右の設定画面の入力欄に「<strong>coffee</strong>」と入力して、そのすぐ下の「Create」をクリックします。</p>
+<p class="image-container"><img src="img/22897234241c0113.png"></p>
+<p>&#34;coffee&#34;という名前の分岐が登録され、新たに&#34;Utterances&#34;という項目が下に追加されます。ここには、コーヒーを注文する場合にユーザが言いそうな発話をいくつか入力します。たとえば、以下のような例が考えられますね。</p>
+<ul>
+<li>「コーヒーをちょうだい」</li>
+<li>「コーヒーをお願いします」</li>
+<li>「コーヒーをください」</li>
+<li>「コーヒー」</li>
+</ul>
+<p>これを&#34;Utterances&#34;と書いてあるすぐ下の入力欄に入力し、最後にENTERキーで登録します。</p>
+<p class="image-container"><img src="img/46533e8f892cef28.png"></p>
+<p>以下のように入力欄の下に表示されればOKです。</p>
+<p class="image-container"><img src="img/e86ab44ad7aabadd.png"></p>
+<p>これを繰り返して、以下のようにいくつかの発話バリエーションを入力します。バリエーションが多ければ多いほど、ユーザのいろんな言い方に対応できるということになります。</p>
+<p class="image-container"><img src="img/23126f7204b85cbe.png"></p>
+<p>これで1つ目の分岐の設定が終わりました。2つ目の分岐の設定を行いましょう。下にある&#34;Add Path&#34;をクリックしてください。</p>
+<p class="image-container"><img src="img/d527b1fb71a51807.png"></p>
+<p>新たに2つ目の分岐（Path）と入力欄が追加されていますね？Choiceブロックではこのようにして分岐を作っていくことになります。</p>
+<p class="image-container"><img src="img/cc1d049a44104b8f.png"></p>
+<p>では続けて、紅茶とオレンジジュースについてもそれぞれ分岐を作ってみてください。最終的に以下のようになればOKです。（長いので分割しています）</p>
+<p class="image-container"><img src="img/445922f2b9af8af6.png"></p>
+<p class="image-container"><img src="img/1ad5a84c57cfb8a3.png"></p>
+<p>では、それぞれの分岐に応じた回答をAlexaにさせましょう。Choiceブロックのそれぞれの分岐にSpeakブロックをつないで、以下のような発話内容を設定してください。</p>
+<p class="image-container"><img src="img/9dee871ccc87ff45.png"></p>
+<p>もしかするとユーザの発話があらかじめ想定したものでない場合も考えられますね。Choiceブロックのそれぞれの分岐で設定した発話バリエーションにどれも合致しない場合は、&#34;<strong>Else</strong>&#34;という分岐に流れます。ここにSpeakブロックをつなげて、もう一度ユーザに別の発話を再度うながすようにします。</p>
+<p class="image-container"><img src="img/8eebffd95e8fbaf1.png"></p>
+<p>そして再度Choiceブロックに戻せばOKです。</p>
+<p class="image-container"><img src="img/1b434d1fb72b7d0d.png"></p>
+<p>Choiceブロックでは会話フローの分岐を行いましたが、逆に複数の会話フローを合流させて1つにすることもできます。Choiceブロックで分岐した3つのSpeakブロックの右側にもう1つSpeakブロックをおいて、以下のように線でつなげます。</p>
+<p class="image-container"><img src="img/27e9cf7b8c5d76ce.png"></p>
+<p>このようにして、フローを分岐・合流しながら会話のフローを作っていきましょう。</p>
+<h2 is-upgraded>テスト</h2>
+<p>では実際にテストで試してみましょう。&#34;Upload to Alexa&#34;をクリックして、Alexa開発者コンソールにアップロードしてテストします。設定したとおりに注文ができるか試してみてください。</p>
+<p>ちゃんといろんな言い方に対応できていますね！メニューにないものを頼んでみたらどうなるでしょうか？</p>
+<p class="image-container"><img style="width: 400.00px" src="img/319383fe099058d3.png"></p>
+<p>こちらもちゃんと動いてますね！</p>
+<p class="image-container"><img style="width: 400.00px" src="img/1e56b90c1f9f3141.png"></p>
+<p>では少し意地悪なテストをしてみましょう。</p>
+<p class="image-container"><img style="width: 400.00px" src="img/7db04e612997bef6.png"></p>
+<p>「じゃあコーヒーで」という想定していない表現でもきちんと認識できていると同時に、メニューにない注文を間違って認識していますね・・・</p>
+<p>なぜかというと、Alexaは人間のように「文脈」を理解しているわけではなく、Alexaが持っている多数の発話データをもとに「統計的」な推測をしているだけなのです。したがって、うまく解釈してくれる場合もあれば、時には間違った解釈をする場合もあります。この解釈の精度はを上げるためには、Alexaがより正しく認識しやすい形にしてあげる必要があります。</p>
+<p>それが「<strong>対話モデル</strong>」になります。</p>
+<p>対話モデルについては以降の章で説明します。Nextをクリックしてください。</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="スキルを楽しくするためのテクニック" duration="0">
+        <p>対話モデルの説明に進む前に、少し息抜きをしましょう。</p>
+<p>ここまでの章で、Voiceflowを使って基本的な会話のやり取りができるようになりました。でもこういうふうにも感じませんでしたか？</p>
+<ul>
+<li>Alexaのおしゃべりが機械的で人間ぽくない</li>
+<li>Alexaとユーザが単に喋っているだけで雰囲気が楽しくない</li>
+</ul>
+<p>この章では、Alexaをより人間らしく、スキルをより楽しくするためのかんたんなテクニックをいくつかご紹介します。</p>
+<h2 is-upgraded>Alexaの声を変える</h2>
+<p>Speakブロックの入力欄の下にあるドロップダウンリストから、Alexaの声を変えることができます。</p>
+<p class="image-container"><img style="width: 400.00px" src="img/3503288b92c99387.png"></p>
+<p>日本語の場合は、標準のAlexaに加えて、</p>
+<ul>
+<li>Mizuki（女性）</li>
+<li>Takumi（男性）</li>
+</ul>
+<p>の3種類の声が選べます。変更してアップロードして試してみてください。ちなみにこんな感じです。</p>
+<ul>
+<li><a href="https://www.dropbox.com/s/e4f2eevre9lbkzn/alexa.m4a?dl=0" target="_blank">Alexa</a></li>
+<li><a href="https://www.dropbox.com/s/dqigwvbf6o2tg91/mizuki.m4a?dl=0" target="_blank">Mizuki</a></li>
+<li><a href="https://www.dropbox.com/s/a99wy0ax8aisyjh/takumi.m4a?dl=0" target="_blank">Takumi</a></li>
+</ul>
+<p>これらをうまく使い分けて、複数のキャラクターが登場するようなスキルにしてもおもしろいですね。</p>
+<aside class="warning"><p>他の言語の声も選択できますが、そのままではカタコトの発音になったり、発話されなかったりします。<br>ただしく発話させるためには、SSMLという音声を調整するためのマークアップ言語を使って「話させたい言語」を指定する必要がありますが、ここでは割愛します。</p>
+</aside>
+<h2 is-upgraded>Alexaの話し方を調整する</h2>
+<p>Alexaの話し方を調整することもできます。「<strong>SSML</strong>」というHTMLに似たタグを入力して発話内容を囲むことで、発話の高低やスピードなどを変えることができますが、VoiceflowではSSMLエディターが用意されているのでGUIでかんたんに行えます。</p>
+<p>最初のSpeakブロックをクリックして設定画面を開き、「コーヒーショップにようこそ」をカーソルで選択して、&#34;ADD EFFECT&#34;をクリックします。</p>
+<p class="image-container"><img style="width: 400.00px" src="img/3ac51568018a6a9.png"></p>
+<p>今回は発話スピードを速くしてみましょう。&#34;ADD EFFECT&#34;をクリックして表示されるメニューから、&#34;Speech Rate&#34; → &#34;Very Fast&#34; を選択します。</p>
+<p class="image-container"><img style="width: 400.00px" src="img/5a07a399538f5305.png"></p>
+<p>発話内容に<code>&lt;prosody rate=...&gt;</code>といった表記が追加されましたね。これがSSMLタグです。このようにSSMLタグで囲むことにより、囲まれた部分の発話を調整できます。</p>
+<p class="image-container"><img style="width: 400.00px" src="img/bc7e324356ceb613.png"></p>
+<p>ちなみに普通の場合と比較するとこんな感じになります。</p>
+<ul>
+<li><a href="https://www.dropbox.com/s/e4f2eevre9lbkzn/alexa.m4a?dl=0" target="_blank">普通のスピードの場合</a></li>
+<li><a href="https://www.dropbox.com/s/6yxllxzxnjmb7q2/alexa-fast.m4a?dl=0" target="_blank">Very Fastの場合</a></li>
+</ul>
+<p>他にもいろいろありますので、いろいろ試してより自然な表現を目指してみてください。</p>
+<aside class="special"><p>SSMLについては以下も参照してください。VoiceflowのSSMLエディターで対応していないSSMLタグは直接テキストを入力することで利用できます。<br><a href="https://developer.amazon.com/ja-JP/docs/alexa/custom-skills/speech-synthesis-markup-language-ssml-reference.html" target="_blank">音声合成マークアップ言語（SSML）のリファレンス</a></p>
+</aside>
+<p>また、いくつかのよく使われる語句や表現などは、より感情を込めて発音することができるようにあらかじめ調整されています。これが「Speechcon」です。</p>
+<p>Speechconを使うには<code>&lt;say-as interpret-as=&#34;interjection&#34;&gt;</code>というSSMLタグを使います。一番最後のSpeakブロックにある、「またいつでもどうぞ」の部分をこのSSMLタグで囲んでみてください。（コピペだとうまく動かない場合があるので直接入力してみてください）</p>
+<p class="image-container"><img style="width: 400.00px" src="img/90292ba36c4a4875.png"></p>
+<p>ちなみに普通の場合と比較するとこんな感じになります。</p>
+<ul>
+<li><a href="https://www.dropbox.com/s/vvsel37onbtr34y/alexa-without-speechcon.m4a?dl=0" target="_blank">Speechconを使わない場合</a></li>
+<li><a href="https://www.dropbox.com/s/r989wxha7n23mgs/alexa-with-speechcon.m4a?dl=0" target="_blank">Speechconを使った場合</a></li>
+</ul>
+<p>Speechconをうまく組み込むと表情豊かな表現が可能です。すべての語句で対応しているわけではありませんが、使える場合はぜひ使ってみてください。</p>
+<aside class="special"><p>Speechconに対応した表現や語句の一覧は以下を参照してください。<br><a href="https://developer.amazon.com/ja-JP/docs/alexa/custom-skills/speechcon-reference-interjections-japanese.html" target="_blank">Speechconリファレンス（感嘆詞）</a></p>
+</aside>
+<h2 is-upgraded>音楽を再生する</h2>
+<p>Alexaに発話させるだけではなく、音楽や効果音などを再生させることもできます。</p>
+<p>音楽や効果音を再生させる方法はいくつかありますが、まずお手軽に使える「Alexa Skills Kitサウンドライブラリ」を使ってみましょう。</p>
+<h3 is-upgraded>Alexa Skills Kitサウンドライブラリ</h3>
+<p>「Alexa Skills Kitサウンドライブラリ」は、Amazon公式のサウンドライブラリです。スキル開発に活用しやすいようにいろんなサウンドや効果音がSSMLの形で用意されており、コピペするだけで使えるようになっています。</p>
+<p>以下のURLをクリックしてみてください。<br><a href="https://developer.amazon.com/ja/docs/custom-skills/ask-soundlibrary.html" target="_blank">https://developer.amazon.com/ja/docs/custom-skills/ask-soundlibrary.html</a></p>
+<p>少し下にスクロールすると、検索フォームがあります。</p>
+<p class="image-container"><img src="img/c321760f2c41c7c5.png"></p>
+<p>ここに「ドア」と入力してENTERキーを押すと検索結果が表示されます。今回は「木（２）」を使いましょう。これをクリックします。</p>
+<p class="image-container"><img src="img/4c478efb3e3a0c04.png"></p>
+<p>再生ボタンを押すとサウンドを聞くことができます。スキルで使うには、横にある&#34;Copy to clipboard&#34;をクリックして、クリップボードにコピーします。</p>
+<p class="image-container"><img src="img/35e7b56c4b2a0e6.png"></p>
+<p>Voiceflowに戻って、一番最後のSpeakブロックの最後にペーストしてください。</p>
+<p class="image-container"><img src="img/aa24400a5e5514c9.png"></p>
+<p>Alexa開発者コンソールにアップロードしてテストしてみましょう。最後にドアを締めるような音が聞こえればOKです。</p>
+<aside class="warning"><p>Alexa Skills Kitサウンドライブラリは、Alexa専用です。VoiceflowではGoogle Homeにも対応していますが、Google Homeでは使えませんのでご注意ください。</p>
+</aside>
+<h3 is-upgraded>mp3ファイルを使う</h3>
+<p>Alexa Skills Kitサウンドライブラリにない効果音やサウンドなどは、mp3ファイルをアップロードして使うこともできます。</p>
+<p>今回は、フリーBGM素材サイト「DOVA−SYNDROME」様にアップされている、shimtone様の「Bossa Nova Jingle 1」を使用させていただきます。</p>
+<aside class="warning"><p>素材を使用してスキルを作成する場合、素材提供元サイトの規約等を必ず確認の上ご利用いただくようお願いたします</p>
+</aside>
+<p>以下のサイトよりmp3ファイルをダウンロードしてください（下の方にある「音楽素材ダウンロードページへ」をクリックして、「DOWNLOAD FILE」ボタンをクリック）<br><a href="https://dova-s.jp/bgm/play4857.html" target="_blank">https://dova-s.jp/bgm/play4857.html</a></p>
+<p>一番最初のSpeakブロックをクリックして、設定画面の下にある「Audio」をクリックします。</p>
+<p class="image-container"><img src="img/1e93042846f84ab5.png"></p>
+<p>Audio用の設定が下に追加されます。&#34;Drop audio file here or Browse&#34; と書かれたところに、ダウンロードしたmp3ファイルをドラッグ＆ドロップします。</p>
+<p class="image-container"><img src="img/563fde4f2d1be613.png"></p>
+<p>以下のように表示されればOKです。再生ボタンを押すとその場で聞けます。</p>
+<p class="image-container"><img src="img/45f2c41a9e39d8b6.png"></p>
+<p>ちなみに、Speakブロックの中でAlexaの会話と音楽の順序を変えることもできます。音符アイコンがついた音楽ファイルのURLっぽいところをドラッグして、上の&#34;System Says&#34;の上にドロップしてみてください。</p>
+<p class="image-container"><img src="img/1270022ea0a5f808.png"></p>
+<p>順序が入れ替わりました。これで、最初に音楽が流れてからAlexaの発話が開始されるようになります。Alexa開発者コンソールにアップロードして確認してみてください。</p>
+<p class="image-container"><img style="width: 400.00px" src="img/d6e353af89fc8d57.png"></p>
+<aside class="special"><p>削除する場合は、ドラッグした時に表示されるゴミ箱アイコン上にドロップすることで削除できます。</p>
+</aside>
+<aside class="warning"><p>音楽ファイルの再生にはいくつかの制限があります。とくに重要なのは、Alexaの1回の発話の中で合計5ファイル・合計240秒まで、という点です。それを超えるとスキルはエラーになりますのでご注意ください。</p>
+</aside>
+<aside class="warning"><p>240秒以上の長さの音楽ファイルを再生させるためにはStreamブロックを使う必要がありますが、使い方が変わってくるため今回は割愛します。</p>
+</aside>
+<p>このように、Alexaの発話を調整したり音楽ファイルを使うことで、より自然かつ楽しいスキルにすることがかんたんにできます。ぜひ活用してください。</p>
+<p>Nextをクリックしてください。</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="対話モデルの作成" duration="0">
+        <p>さぁ、ではいよいよ対話モデルを作っていきましょう。</p>
+<p>対話モデルを作るにあたり、最初に覚えておかなくてはいけないキーワードが3つだけあります。</p>
+<ul>
+<li>インテント</li>
+<li>サンプル発話</li>
+<li>スロット</li>
+</ul>
+<p>覚えておかないといけないといってもそれほど難しいものではありませんし、このうち「<strong>インテント</strong>」と「<strong>サンプル発話</strong>」については実はもうもうやっています。なので、おさらいも含めて、ひとつづつ理解していきましょう。</p>
+<h2 is-upgraded>インテント</h2>
+<p>インテント（&#34;Intent&#34;）を辞書でひくと「意図」や「目的」とあります。でもこれじゃなんの意味かわからないですよね。</p>
+<p>そこで実際の「コーヒーショップ」を例に考えてみましょう。コーヒーショップで店員さんと会話するのは普通こういった内容になるかと思います。</p>
+<p class="image-container"><img src="img/4f15182faa7998bf.png"></p>
+<p>この3つはそれぞれ目的が違いますよね？</p>
+<p class="image-container"><img src="img/ed2a808090415dda.png"></p>
+<p>この1つ1つの「<strong>目的</strong>」、これが「<strong>インテント</strong>」になります。いくつか他の例もあげてみます。</p>
+<p><strong>お天気スキルの場合</strong></p>
+<ul>
+<li>「天気を教えて」と言うと、「◯◯県の今日の天気は晴れです」とお天気を答えてくれる<br>→ 天気インテント</li>
+<li>「気温を教えて」と言うと、「◯◯県の今日の気温は20℃です」と気温を答えてくれる<br>→ 気温インテント</li>
+</ul>
+<p><strong>音楽スキルの場合</strong></p>
+<ul>
+<li>「○○○の曲をかけて」というと、その曲を再生してくれる<br>→ 再生インテント</li>
+<li>「曲を一時停止して」というと、その曲の再生を一時停止してくれる<br>→ 一時停止インテント</li>
+</ul>
+<p>今回のサンプルスキル「コーヒーショップ」を見てみましょう。</p>
+<p class="image-container"><img src="img/950d94e4379e0dce.png"></p>
+<p>はい、「コーヒーを注文したい」ということですね。これが「インテント」になります。</p>
+<p>そして、4章でChoice Blockに3つの分岐をつくりましたよね？</p>
+<p class="image-container"><img src="img/445922f2b9af8af6.png"></p>
+<p class="image-container"><img src="img/1ad5a84c57cfb8a3.png"></p>
+<p>実は、これが「<strong>インテント</strong>」なのです。図にするとこんな感じです。</p>
+<p class="image-container"><img src="img/bccb5bcb1d790d6b.png"></p>
+<p>つまり、Voiceflowだとこれが会話の分岐点になると思ってもらえばいいかなと思います。</p>
+<p>このようにユーザがやりたいことを「インテント」として用意して、それに応じて会話フローや機能を作っていくというのが、スマートスピーカースキルの開発の基本になります。</p>
+<h2 is-upgraded>サンプル発話</h2>
+<p>「<strong>サンプル発話</strong>」は、インテントを呼び出すためのユーザの発話のことです。ユーザがこう言ったらこのインテントのことだよ、ということをアレクサに教えるためのものだと考えてください。</p>
+<p>たとえば、コーヒーを頼みたい場合だけでもいろんな言い方のバリエーションがあります。例えば、「コーヒーをください」はOKだけど「コーヒーがいいな」はNGというのは人間らしくありませんよね。こういったバリエーションに対応するのが「<strong>サンプル発話</strong>」になります。</p>
+<p class="image-container"><img src="img/8560aa0066850e7b.png"></p>
+<p class="image-container"><img src="img/49444581c581a417.png"></p>
+<p>サンプル発話を多く登録すると、それだけいろんな言い方に対応ができるということになりますので、できるだけたくさん登録することをオススメします。</p>
+<p>そして、これも4章でChoice Blockに以下のようなパターンで登録しています。</p>
+<p class="image-container"><img src="img/445922f2b9af8af6.png"></p>
+<p class="image-container"><img src="img/1ad5a84c57cfb8a3.png"></p>
+<aside class="special"><p>実際にはサンプル発話に登録していなくても、発話の中のキーワードなどである程度は推測してくれます。ただし、確実ではありませんし、逆に、間違って違うインテントに紐付いてしまうこともあります。（4章の最後のテストで「緑茶ちょうだい」と言った場合に、アレクサが「紅茶」というふうに間違って理解したのはこのせいなんです。）<br><br>繰り返しになりますが、サンプル発話はたくさん登録しましょう。</p>
+</aside>
+<h2 is-upgraded>スロット</h2>
+<p>最後に「<strong>スロット</strong>」です。これはここまででやってない新しいキーワードです。スロットの話をする前に、少し振り返ってみましょう。</p>
+<p>サンプルでは3つのインテントを用意しました。</p>
+<p class="image-container"><img src="img/bccb5bcb1d790d6b.png"></p>
+<p>注文したい飲み物ごとにインテントがあるということですね。さらに飲み物を追加したければ、インテントを増やせばよいということになります。</p>
+<p class="image-container"><img src="img/4f7052735b99f1b6.png"></p>
+<p>そして、それぞれのインテントにはいくつかのサンプル発話を登録しました。たとえば、コーヒーを注文するインテントだと、</p>
+<p class="image-container"><img src="img/8560aa0066850e7b.png"></p>
+<p>の4つになります。他のインテントにも同じだけのサンプル発話が登録されているので、合計12個のサンプル発話が登録されていることになります。</p>
+<p class="image-container"><img src="img/d3eab8e9874a63b7.png"></p>
+<p>でも、もしメニューが100個あったらどうなるでしょうか・・・？</p>
+<ul>
+<li>100個のインテントを登録</li>
+<li>それぞれのインテントごとに4つのサンプル発話を登録</li>
+<li>合計400個のサンプル発話・・・</li>
+</ul>
+<p>また、「コーヒーにしようかな」「オレンジジュースがいいな」みたいに、新しくサンプル発話を追加する場合はどうなるでしょうか？</p>
+<ul>
+<li>100個のインテントそれぞれに「〜にしようかな」「〜がいいな」という2つのサンプル発話を追加</li>
+<li>合計200個のサンプル発話を追加登録・・・</li>
+</ul>
+<p class="image-container"><img style="width: 300.00px" src="img/aeef5d3785f761d9.png"></p>
+<p>いずれの場合もゾッとしますよね・・・？</p>
+<p>こういうときのために「<strong>スロット</strong>」があります。</p>
+<p>3つのインテントのサンプル発話をもう一度見てみましょう。</p>
+<p class="image-container"><img src="img/8fd52419df15037.png"></p>
+<p>飲み物の名前以外は同じですよね？</p>
+<p class="image-container"><img src="img/1972f39a798b7967.png"></p>
+<p>「〜をください」とユーザが言ったら、なにか「注文したい」インテントなのだなということがわかります。次に、知りたいのは「何を」注文したいか？つまり、飲み物の名前です。乱暴に言ってしまうと、この部分だけが別にわかればいいわけです。この部分を切り出して後で参照できるようにするのが「<strong>スロット</strong>」です。</p>
+<p>といってもピンとこないと思うので、実際に使いながら理解していきましょう。Choice Blockをクリックして、右のメニューから&#34;Add Path&#34;をクリックします。</p>
+<p class="image-container"><img src="img/d08f9a4065b152f9.png"></p>
+<p>実はこれが「インテント」になります。まずインテント名を入力しましょう。&#34;order_intent&#34;と入力して、&#34;Create&#34;をクリックします。</p>
+<p class="image-container"><img style="width: 400.00px" src="img/120912db327c59ef.png"></p>
+<p>次に、ユーザの発話パターンを登録します。これが「サンプル発話」になります。ここで「スロット」を使います。まず、&#34;drink_name をちょうだい&#34; と入力します。drink_name の後ろに必ず半角スペースを入れるようにしてください。</p>
+<p class="image-container"><img style="width: 400.00px" src="img/be64b8082e50df1f.png"></p>
+<p>drink_name の部分をカーソルで選択すると以下のような表示になりますので、&#34;Create&#34;をクリックします。</p>
+<p class="image-container"><img style="width: 400.00px" src="img/ac443f9fe2073e27.png"></p>
+<p>スロット作成画面が表示されます。スロット名はさきほど選択したdrink_nameが入力されています。次にスロットタイプです。今回は&#34;Custom&#34;を選択してください。</p>
+<p class="image-container"><img style="width: 400.00px" src="img/a1292181db2dc877.png"></p>
+<p>スロットの「候補」となるキーワードを入力します。最初に「コーヒー」と入力して、&#34;Add custom value&#34;をクリックします。</p>
+<p class="image-container"><img style="width: 400.00px" src="img/a429e645a9324846.png"></p>
+<p>入力欄が追加されます。これを繰り返して、「紅茶」「オレンジジュース」も入力してください。</p>
+<p class="image-container"><img style="width: 400.00px" src="img/f50ebaa3554f019e.png"></p>
+<p>以下のようになればOKです。&#34;Create Slot&#34;をクリックして、スロットを作成します。</p>
+<p class="image-container"><img style="width: 400.00px" src="img/3acecd49851ccedb.png"></p>
+<p>インテントの画面に戻ってくると、以下のように、スロットを含んだサンプル発話になっていますね。&#34;Enter&#34;をクリックしてサンプル発話を登録します。</p>
+<p class="image-container"><img style="width: 400.00px" src="img/c92acacba717c906.png"></p>
+<p>以下のように入力欄の下に登録されればOKです。</p>
+<p class="image-container"><img style="width: 400.00px" src="img/753989afa4b10e32.png"></p>
+<p>では残りのサンプル発話も登録しましょう。なお、スロットの登録は最初の1回だけです。2回目以降は &#34;{&#34; を入力するとスロットが表示されるので選択するだけです。</p>
+<p class="image-container"><img style="width: 400.00px" src="img/2269d54909271154.gif"></p>
+<p>これを繰り返して残りのサンプル発話も登録します。最終的にこうなればOKです。</p>
+<p class="image-container"><img style="width: 400.00px" src="img/4b16636d4bf5ebd4.png"></p>
+<p>これでいろんな「注文」をまとめて行うインテントができました。最初に作った、coffee/tea/orangejuiceのインテントはもう不要です。削除しちゃいましょう。</p>
+<p class="image-container"><img style="width: 400.00px" src="img/1edaf9e61e2aeaf4.gif"></p>
+<p>cofee/tea/orangejuiceのインテントにそれぞれ紐付いていたSpeak Blockは削除せずにそのままで少し右側にずらしておいてください。</p>
+<p class="image-container"><img src="img/1b4899a601891311.png"></p>
+<p>では、スロットがどういう動きになるのかを一度試してみましょう。Speakブロックを1つおいて、order_intentと線でつなげてください。</p>
+<p class="image-container"><img src="img/b7b4675f7556e8ee.png"></p>
+<p>Speakブロックで発話させる内容は以下のように入力します。スロット名を含めているのがポイントです。スロット名を入力する場合は &#34;{&#34; を入力するリストから選択するようにしてください。あと、スロットの前後には半角スペースを入れることを忘れないでください。</p>
+<p class="image-container"><img style="width: 400.00px" src="img/365dd14691aa19f5.gif"></p>
+<p>アップロードして確かめてみましょう。</p>
+<p class="image-container"><img style="width: 400.00px" src="img/eddda8322561ea8f.png"></p>
+<p>スロットに登録したキーワードが {drink_name} で取得できているのがわかるでしょうか。このようにしてユーザの発話の一部分を取り出して、あとから参照できるようにするのがスロットの役割です。プログラミングの世界では「変数」と言ったりします。</p>
+<p>ではスロットでキーワードを取得できるようになったので、これを使って分岐してみましょう。さきほどお試しで置いたSpeakブロックはいったん削除してください。ブロックを削除するには、プロックを選択してDeleteキーを押すか、ブロック上で右クリックしてからDelete Blockを選択します。</p>
+<p class="image-container"><img src="img/8afcbbe03ebf66be.png"></p>
+<p>スロットや変数を使って分岐させるには<strong>Conditionブロック</strong>を使います。Conditionブロックをおいて、order_intentと線でつなぎます。</p>
+<p class="image-container"><img src="img/4748e67f695de1b3.png"></p>
+<p>Condtionブロックの設定で、スロットを使った条件を1つづつ設定します。上の欄では drink_name を選択し、下の欄に「コーヒー」と入力します。これで「もし drink_name が &#34;コーヒー&#34; だったならば」という分岐が作成されます。</p>
+<p class="image-container"><img src="img/9a39762c9a1394d1.gif"></p>
+<p>同じように、紅茶、オレンジジュースについても条件分岐を作りましょう。&#34;Add If Statement&#34;をクリックしてください。</p>
+<p class="image-container"><img src="img/de74a90d5e058cc9.png"></p>
+<p>新しい条件分岐の設定画面が追加されます。コーヒーと同じように、紅茶、オレンジジュースについても分岐を作ってみてください。</p>
+<p class="image-container"><img src="img/7d2da3b94ac5b5b7.png"></p>
+<p>以下のようになればOKです。</p>
+<p class="image-container"><img src="img/98adafe443de1f3d.png"></p>
+<p>最後にそれぞれの条件分岐からそれぞれのSpeakブロックにつなげればOKです。</p>
+<p class="image-container"><img src="img/741cde958771a7f2.png"></p>
+<p>今回、drink_name にはコーヒー、紅茶、オレンジジュースを登録していますが、想定していないキーワードが入ってくる可能性もあります。その場合は<strong>Else</strong>に行きますので、ここでSpeakブロックをつなげて、別の注文をしてもらうようにしておけば親切ですね。</p>
+<p class="image-container"><img src="img/5a4aa52e039a3674.png"></p>
+<p>ではアップロードして試してみましょう。</p>
+<p>スロットの内容できちんと分岐しているのがわかりますね。では、対応していないメニューを注文した場合はどうなるでしょうか？</p>
+<p>4章では間違って認識していましたが、今回はきちんと「対応していない」ことを認識していますね！</p>
+<h2 is-upgraded>シノニム</h2>
+<p>すこしおさらいです。インテントを呼び出すために、ユーザのいろんな言い方のバリエーションに対応するのがサンプル発話でしたね。実はスロットにもこのようなバリエーションに対応するための仕組みがあります。それが「<strong>シノニム</strong>」です。</p>
+<p>スロットの登録内容を見てみましょう。今回のメニューでは、コーヒー・紅茶・オレンジジュースの3つをスロット候補として登録しました。</p>
+<p class="image-container"><img style="width: 400.00px" src="img/3acecd49851ccedb.png"></p>
+<p>コーヒーだけでもいろんな言い方があります。</p>
+<ul>
+<li>コーヒー</li>
+<li>ホット</li>
+<li>アメリカン</li>
+<li>ホットコーヒー</li>
+</ul>
+<p>これらを1つ1つスロット候補として登録、それぞれに分岐を用意、でコーヒーなので同じ値段、という感じで普通にやるとこんな感じになりますよね。</p>
+<p class="image-container"><img src="img/c3cbbc64314fc133.png"></p>
+<p>数が少ないうちはこれでもいいんですけど、やっぱりめんどくさいですよね。そこでシノニムを使います。シノニムは「同義語」という意味で、言い方は違うけど同じ意味ということを指します。これも実際にやってみるのが一番です。</p>
+<p>画面左下の小さなメニューから、&#34;&lt;/&gt;&#34;と書かれたアイコンをクリックしてください。</p>
+<p class="image-container"><img src="img/4f8c573d2d0de9c7.png"></p>
+<p>新しい画面が開きました。この画面を「対話モデルマネージャー」といいます。インテントやスロットの作成はブロックのメニューから直接行いましたが、編集・削除は対話モデルマネージャーから行います。（もちろん作成もできます）</p>
+<p class="image-container"><img style="width: 700.00px" src="img/ca50864779394b10.png"></p>
+<p>&#34;Slot&#34;タブをクリックします。</p>
+<p class="image-container"><img src="img/c86f99b77f09383.png"></p>
+<p>drink_name スロットの設定が表示されています。スロット候補となるキーワードの右側に同義語をカンマ区切りで入力します。入力し終わったら、右上の&#34;X&#34;をクリックします。</p>
+<p class="image-container"><img style="width: 700.00px" src="img/8aa547af2d2cc869.png"></p>
+<p>では再度アップロードして試してみましょう。登録した同義語を使って注文してみてください。</p>
+<p class="image-container"><img style="width: 400.00px" src="img/13d04a9ffc45d6d1.png"></p>
+<p>このように、インテント・サンプル発話・スロット（シノニム）を使って、ユーザの発話モデルをパターン化し、いろんなバリエーションに対応することが「対話モデルの設計」になります！対話モデルの設計をきちんと行うことで、スキルがとても自然なものになります。最初は少し難しく感じるかもしれませんが、少しづつ慣れていきましょう。</p>
+<p>ではNextをクリックしてください。</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="画面付デバイスに対応する" duration="0">
+        
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="備考" duration="0">
+        <p>サンプルスキルでは以下の素材を利用させていただきました。ありがとうございました。</p>
+<h3 is-upgraded>画像</h3>
+<ul>
+<li>https://pixabay.com/ja/photos/%E3%82%B3%E3%83%BC%E3%83%92%E3%83%BC-%E3%82%B7%E3%83%A7%E3%83%83%E3%83%97-%E3%83%90%E3%83%AA%E3%82%B9%E3%82%BF-1209863/</li>
+<li>https://pixabay.com/ja/photos/%E3%82%B3%E3%83%BC%E3%83%92%E3%83%BC-%E8%B1%86-%E3%82%B3%E3%83%BC%E3%83%92%E3%83%BC%E8%B1%86-1117933/</li>
+<li>https://pixabay.com/ja/photos/%E6%96%B0%E9%AE%AE%E3%81%AA%E3%82%AA%E3%83%AC%E3%83%B3%E3%82%B8%E3%82%B8%E3%83%A5%E3%83%BC%E3%82%B9-%E5%9C%A7%E8%BF%AB-1614822/</li>
+<li>https://pixabay.com/ja/photos/%E8%8C%B6-%E3%81%8A%E8%8C%B6%E3%81%AE%E3%83%9D%E3%83%83%E3%83%88-%E7%B4%85%E8%8C%B6%E3%81%AE%E3%82%AB%E3%83%83%E3%83%97-4093367/</li>
+</ul>
+<h3 is-upgraded>サウンド</h3>
+<p>https://dova-s.jp/bgm/play4857.html<br>https://soundeffect-lab.info/sound/search.php?searchtext=%E3%83%AC%E3%82%B8%E3%82%B9%E3%82%BF%E3%83%BC&amp;x=0&amp;y=0</p>
+
+
+      </google-codelab-step>
+    
+  </google-codelab>
+
+  <script src="https://storage.googleapis.com/codelab-elements/native-shim.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/custom-elements.min.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/prettify.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/codelab-elements.js"></script>
+
+</body>
+</html>
