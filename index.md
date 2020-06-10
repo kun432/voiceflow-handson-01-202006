@@ -33,14 +33,14 @@ VoiceflowでAlexaスキルを開発するには事前に以下が必要です。
 ### 注意
 
 Negative
-: 本手順書は2020年4月22日時点のものですが、Voiceflowの開発はかなり活発なので、本手順書通りに進めてもうまくいかない場合や画面が変更されている場合があります。ご容赦ください。（必要な場合は補足します）
+: 本手順書は2020年6月11日時点のものですが、Voiceflowの開発はかなり活発なので、本手順書通りに進めてもうまくいかない場合や画面が変更されている場合があります。ご容赦ください。（必要な場合は補足します）
 
 Positive
-: 不具合やお気づきの点があれば、[https://github.com/kun432/voiceflow-handson-setup/issues](https://github.com/kun432/voiceflow-handson-setup/issues)に記載してください
+: 不具合やお気づきの点があれば、[https://github.com/kun432/voiceflow-handson-01-202006/issues](https://github.com/kun432/voiceflow-handson-01-202006/issues)に記載してください
 
 ### 更新履歴
 
-- 2020/04/22   最新化
+- 2020/06/11   公開
 
 ではNextをクリックしてください。
 
@@ -803,18 +803,19 @@ Voiceflowを使えば、ブロックを並べて線でつなげていくだけ�
 
 あなたのアイデアを活かした素晴らしいスキルが公開される日を楽しみにしています！
 
-## 備考
+## 素材について
 
 サンプルスキルでは以下の素材を利用させていただきました。ありがとうございました。
 
 #### 画像
 
-- https://pixabay.com/ja/photos/%E3%82%B3%E3%83%BC%E3%83%92%E3%83%BC-%E3%82%B7%E3%83%A7%E3%83%83%E3%83%97-%E3%83%90%E3%83%AA%E3%82%B9%E3%82%BF-1209863/
-- https://pixabay.com/ja/photos/%E3%82%B3%E3%83%BC%E3%83%92%E3%83%BC-%E8%B1%86-%E3%82%B3%E3%83%BC%E3%83%92%E3%83%BC%E8%B1%86-1117933/
-- https://pixabay.com/ja/photos/%E6%96%B0%E9%AE%AE%E3%81%AA%E3%82%AA%E3%83%AC%E3%83%B3%E3%82%B8%E3%82%B8%E3%83%A5%E3%83%BC%E3%82%B9-%E5%9C%A7%E8%BF%AB-1614822/
-- https://pixabay.com/ja/photos/%E8%8C%B6-%E3%81%8A%E8%8C%B6%E3%81%AE%E3%83%9D%E3%83%83%E3%83%88-%E7%B4%85%E8%8C%B6%E3%81%AE%E3%82%AB%E3%83%83%E3%83%97-4093367/
+- [https://pixabay.com/ja/photos/コーヒー-ショップ-バリスタ-1209863/](https://pixabay.com/ja/photos/%E3%82%B3%E3%83%BC%E3%83%92%E3%83%BC-%E3%82%B7%E3%83%A7%E3%83%83%E3%83%97-%E3%83%90%E3%83%AA%E3%82%B9%E3%82%BF-1209863/)
+- [https://pixabay.com/ja/photos/コーヒー-豆-コーヒー豆-1117933/](https://pixabay.com/ja/photos/%E3%82%B3%E3%83%BC%E3%83%92%E3%83%BC-%E8%B1%86-%E3%82%B3%E3%83%BC%E3%83%92%E3%83%BC%E8%B1%86-1117933/)
+- [https://pixabay.com/ja/photos/新鮮なオレンジジュース-圧迫-1614822/](https://pixabay.com/ja/photos/%E6%96%B0%E9%AE%AE%E3%81%AA%E3%82%AA%E3%83%AC%E3%83%B3%E3%82%B8%E3%82%B8%E3%83%A5%E3%83%BC%E3%82%B9-%E5%9C%A7%E8%BF%AB-1614822/)
+- [https://pixabay.com/ja/photos/茶-お茶のポット-紅茶のカップ-4093367/](https://pixabay.com/ja/photos/%E8%8C%B6-%E3%81%8A%E8%8C%B6%E3%81%AE%E3%83%9D%E3%83%83%E3%83%88-%E7%B4%85%E8%8C%B6%E3%81%AE%E3%82%AB%E3%83%83%E3%83%97-4093367/)
+- [かわいいフリー素材集 いらすとや](https://www.irasutoya.com/) 
 
 #### サウンド
 
-- https://dova-s.jp/bgm/play4857.html
-- https://soundeffect-lab.info/sound/search.php?searchtext=%E3%83%AC%E3%82%B8%E3%82%B9%E3%82%BF%E3%83%BC&x=0&y=0
+- [フリーBGM素材「Bossa Nova Jingle 1」試聴ページ｜フリーBGM DOVA-SYNDROME](https://dova-s.jp/bgm/play4857.html)
+- [効果音ラボ様：レジスターで精算](https://soundeffect-lab.info/sound/search.php?searchtext=%E3%83%AC%E3%82%B8%E3%82%B9%E3%82%BF%E3%83%BC&x=0&y=0)
