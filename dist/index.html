@@ -40,13 +40,13 @@
 </ul>
 <p>まだの方は以下のページを参考に作成してください。<br><a href="https://vf-handson-setup.netlify.app/#0" target="_blank">https://vf-handson-setup.netlify.app/</a></p>
 <h2 is-upgraded>注意</h2>
-<aside class="warning"><p>本手順書は2020年4月22日時点のものですが、Voiceflowの開発はかなり活発なので、本手順書通りに進めてもうまくいかない場合や画面が変更されている場合があります。ご容赦ください。（必要な場合は補足します）</p>
+<aside class="warning"><p>本手順書は2020年6月11日時点のものですが、Voiceflowの開発はかなり活発なので、本手順書通りに進めてもうまくいかない場合や画面が変更されている場合があります。ご容赦ください。（必要な場合は補足します）</p>
 </aside>
-<aside class="special"><p>不具合やお気づきの点があれば、<a href="https://github.com/kun432/voiceflow-handson-setup/issues" target="_blank">https://github.com/kun432/voiceflow-handson-setup/issues</a>に記載してください</p>
+<aside class="special"><p>不具合やお気づきの点があれば、<a href="https://github.com/kun432/voiceflow-handson-01-202006/issues" target="_blank">https://github.com/kun432/voiceflow-handson-01-202006/issues</a>に記載してください</p>
 </aside>
 <h2 is-upgraded>更新履歴</h2>
 <ul>
-<li>2020/04/22   最新化</li>
+<li>2020/06/11   公開</li>
 </ul>
 <p>ではNextをクリックしてください。</p>
 
@@ -483,27 +483,84 @@
 <p>では再度アップロードして試してみましょう。登録した同義語を使って注文してみてください。</p>
 <p class="image-container"><img style="width: 400.00px" src="img/13d04a9ffc45d6d1.png"></p>
 <p>このように、インテント・サンプル発話・スロット（シノニム）を使って、ユーザの発話モデルをパターン化し、いろんなバリエーションに対応することが「対話モデルの設計」になります！対話モデルの設計をきちんと行うことで、スキルがとても自然なものになります。最初は少し難しく感じるかもしれませんが、少しづつ慣れていきましょう。</p>
+<p>ここまでのスキルの全体像をおさらいしておきます。</p>
+<p class="image-container"><img src="img/d9e3e4b798a1f68a.png"></p>
 <p>ではNextをクリックしてください。</p>
 
 
       </google-codelab-step>
     
-      <google-codelab-step label="画面付デバイスに対応する" duration="0">
-        
+      <google-codelab-step label="画面付きデバイスに対応する" duration="0">
+        <p>ここまでは音声だけの対話をやってきましたが、Echo Showなどの画面付きデバイスに対応したスキルを作ることもできます。それが<strong>Displayブロック</strong>です。</p>
+<p class="image-container"><img style="width: 400.00px" src="img/598939a48706652.png"></p>
+<p>Displayブロックには2つのタイプがあります。</p>
+<ul>
+<li><strong>Splash</strong><ul>
+<li>画像と文字だけを設定して表示するシンプルなタイプです。</li>
+</ul>
+</li>
+<li><strong>Advanced</strong><ul>
+<li>Alexa標準の画面デザイン用言語であるAPL（Alexa Presentation Language）を使って作成した画面デザインファイルをアップロードして使うタイプです。</li>
+</ul>
+</li>
+</ul>
+<p>ここでは、かんたんに使えるSplashタイプを使ってみましょう。</p>
+<aside class="special"><p>APLを駆使すると、アニメーションやスライドショーなど凝ったことともできるようになります。</p>
+</aside>
+<aside class="warning"><p>APLを使うと、音声と画面タッチの両方の操作に対応したスキルを作成できますが、Voiceflowでは画面タッチ操作に対応していません。（2020/6/10時点）</p>
+</aside>
+<p>まず、スキルが起動したらコーヒーショップの画像が表示されるようにしてみましょう。以下の画像をお使いのパソコンにダウンロードしてください。（画像を右クリックして「名前を付けて保存」を選択してください）</p>
+<p class="image-container"><img src="img/ee216b18335a0612.jpg"></p>
+<p>次にDisplayブロックを配置します。最初のSpeak blockの上に配置してください。</p>
+<p class="image-container"><img src="img/d03025419e419472.png"></p>
+<p>Displayブロックの設定画面は以下のように設定します。</p>
+<ul>
+<li>タイプは&#34;Splash&#34;を選択</li>
+<li>上の入力欄に「コーヒーショップにようこそ」と入力</li>
+<li>先ほどダウンロードしたcoffeeshop.jpgを下の囲みの中にドラッグアンドドロップしてアップロード</li>
+</ul>
+<p class="image-container"><img style="width: 400.00px" src="img/ee82bffb242368d7.gif"></p>
+<p>あとは線がつながるようにすればOKなのですが、別のやり方として複数のブロックを1つにまとめることもできます。やってみましょう。</p>
+<p class="image-container"><img style="width: 400.00px" src="img/461a9f32d829a32e.gif"></p>
+<p>Speakブロックにドラッグすると前後にスペースが空きましたね？このときにドロップすれば複数のブロックが1つになるというわけです。ブロックをたくさん置くと線が増えて流れが見えにくくなりがちですが、複数のブロックをまとめることで、見た目もスッキリしますし、処理がひとまとめになってわかりやすいですね。</p>
+<p>なお、合体したブロックの中では上から順に実行されます。したがって、ChoiceブロックやCondtionブロックのように「複数に分岐する」ブロックを「途中」に置くことはできませんのでご注意ください（例外もあります）。</p>
+<p class="image-container"><img src="img/b1d5f538acbf9713.png"></p>
+<p>では続けて、注文した商品のそれぞれの画像を表示するようにしてみましょう。以下に、コーヒー・紅茶・オレンジジュースの画像を用意しましたので、上のやり方を参考にやってみてください。</p>
+<p class="image-container"><img src="img/9f93feb6ea9556b8.jpg"></p>
+<p class="image-container"><img src="img/57025acbe511d070.jpg"></p>
+<p class="image-container"><img src="img/f9a7971e9991d2fe.jpg"></p>
+<p>最終的にこうなればOKです。</p>
+<p class="image-container"><img src="img/d58495ed40a6fc7b.png"></p>
+<p>ではアップロードして試してみましょう。</p>
+<p>Alexa開発者コンソールのテストシミュレータで、「デバイスの表示」にチェックを入れて、それ以外はチェックを外してください。デバイスはどれでもよいので、とりあえず「中型デバイス」を選択してみましょう。</p>
+<p class="image-container"><img src="img/6992db9a33b1de53.png"></p>
+<p>ではスキルを実行してみます。</p>
+<p class="image-container"><img src="img/65f13d80fe0695d5.png"></p>
+<p class="image-container"><img src="img/12e86cc04696c666.png"></p>
+<p>うまく動きました！</p>
+<h2 is-upgraded>まとめ</h2>
+<p>これでチュートリアルはおしまいです。</p>
+<p>Voiceflowを使えば、ブロックを並べて線でつなげていくだけなので、初心者の方でもかんたんにAlexaスキルが作れます。今回ご紹介した機能以外にもたくさんの機能がありますので、今後もいろいろなチュートリアルを公開していく予定です。</p>
+<p>あなたのアイデアを活かした素晴らしいスキルが公開される日を楽しみにしています！</p>
+
 
       </google-codelab-step>
     
-      <google-codelab-step label="備考" duration="0">
+      <google-codelab-step label="素材について" duration="0">
         <p>サンプルスキルでは以下の素材を利用させていただきました。ありがとうございました。</p>
 <h3 is-upgraded>画像</h3>
 <ul>
-<li>https://pixabay.com/ja/photos/%E3%82%B3%E3%83%BC%E3%83%92%E3%83%BC-%E3%82%B7%E3%83%A7%E3%83%83%E3%83%97-%E3%83%90%E3%83%AA%E3%82%B9%E3%82%BF-1209863/</li>
-<li>https://pixabay.com/ja/photos/%E3%82%B3%E3%83%BC%E3%83%92%E3%83%BC-%E8%B1%86-%E3%82%B3%E3%83%BC%E3%83%92%E3%83%BC%E8%B1%86-1117933/</li>
-<li>https://pixabay.com/ja/photos/%E6%96%B0%E9%AE%AE%E3%81%AA%E3%82%AA%E3%83%AC%E3%83%B3%E3%82%B8%E3%82%B8%E3%83%A5%E3%83%BC%E3%82%B9-%E5%9C%A7%E8%BF%AB-1614822/</li>
-<li>https://pixabay.com/ja/photos/%E8%8C%B6-%E3%81%8A%E8%8C%B6%E3%81%AE%E3%83%9D%E3%83%83%E3%83%88-%E7%B4%85%E8%8C%B6%E3%81%AE%E3%82%AB%E3%83%83%E3%83%97-4093367/</li>
+<li><a href="https://pixabay.com/ja/photos/%E3%82%B3%E3%83%BC%E3%83%92%E3%83%BC-%E3%82%B7%E3%83%A7%E3%83%83%E3%83%97-%E3%83%90%E3%83%AA%E3%82%B9%E3%82%BF-1209863/" target="_blank">https://pixabay.com/ja/photos/コーヒー-ショップ-バリスタ-1209863/</a></li>
+<li><a href="https://pixabay.com/ja/photos/%E3%82%B3%E3%83%BC%E3%83%92%E3%83%BC-%E8%B1%86-%E3%82%B3%E3%83%BC%E3%83%92%E3%83%BC%E8%B1%86-1117933/" target="_blank">https://pixabay.com/ja/photos/コーヒー-豆-コーヒー豆-1117933/</a></li>
+<li><a href="https://pixabay.com/ja/photos/%E6%96%B0%E9%AE%AE%E3%81%AA%E3%82%AA%E3%83%AC%E3%83%B3%E3%82%B8%E3%82%B8%E3%83%A5%E3%83%BC%E3%82%B9-%E5%9C%A7%E8%BF%AB-1614822/" target="_blank">https://pixabay.com/ja/photos/新鮮なオレンジジュース-圧迫-1614822/</a></li>
+<li><a href="https://pixabay.com/ja/photos/%E8%8C%B6-%E3%81%8A%E8%8C%B6%E3%81%AE%E3%83%9D%E3%83%83%E3%83%88-%E7%B4%85%E8%8C%B6%E3%81%AE%E3%82%AB%E3%83%83%E3%83%97-4093367/" target="_blank">https://pixabay.com/ja/photos/茶-お茶のポット-紅茶のカップ-4093367/</a></li>
+<li><a href="https://www.irasutoya.com/" target="_blank">かわいいフリー素材集 いらすとや</a></li>
 </ul>
 <h3 is-upgraded>サウンド</h3>
-<p>https://dova-s.jp/bgm/play4857.html<br>https://soundeffect-lab.info/sound/search.php?searchtext=%E3%83%AC%E3%82%B8%E3%82%B9%E3%82%BF%E3%83%BC&amp;x=0&amp;y=0</p>
+<ul>
+<li><a href="https://dova-s.jp/bgm/play4857.html" target="_blank">フリーBGM素材「Bossa Nova Jingle 1」試聴ページ｜フリーBGM DOVA-SYNDROME</a></li>
+<li><a href="https://soundeffect-lab.info/sound/search.php?searchtext=%E3%83%AC%E3%82%B8%E3%82%B9%E3%82%BF%E3%83%BC&x=0&y=0" target="_blank">効果音ラボ様：レジスターで精算</a></li>
+</ul>
 
 
       </google-codelab-step>
